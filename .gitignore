@@ -14,6 +14,9 @@ execution_plan.json
 # =========================
 examples/face-access-control/
 
+# Runtime artifacts in examples (but allow example docs)
+examples/*/.agents/
+
 # =========================
 # Internal docs
 # =========================

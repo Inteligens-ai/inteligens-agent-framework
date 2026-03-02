@@ -62,14 +62,23 @@ def cmd_next():
         return
 
     step = plan[step_idx]
+    
+    # Verificar se há um step anterior aguardando aprovação
+    # (isso só acontece se --done foi chamado em um step com requires_approval mas --approve não foi chamado)
+    if step_idx > 0:
+        prev_step = plan[step_idx - 1]
+        if (prev_step.get("requires_approval") and 
+            (step_idx - 1) not in state.get("approved_steps", [])):
+            print("⏸️ Previous step completed but awaiting approval. Use --approve to continue.")
+            print(f"\nStep {prev_step['step']} ({prev_step.get('agent')}) is waiting for approval.")
+            return
 
-    if step.get("requires_approval") and step_idx not in state.get("approved_steps", []):
-        print("⏸️ Step awaiting approval. Use --approve first.")
-        return
-
+    # Sempre mostrar o step atual (permitir execução)
     print("# =====================================")
     print(f"# STEP {step['step']} — phase={step.get('phase')}")
     print(f"# Agent: {step.get('agent')}")
+    if step.get("requires_approval"):
+        print("# ⚠️  This step requires approval after completion")
     print("# =====================================\n")
     print("Follow the agent persona and produce concrete deliverables.")
 
