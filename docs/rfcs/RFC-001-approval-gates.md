@@ -1,8 +1,9 @@
-# RFC-001 — Approval Gates (Hardened)
+# RFC-001 — Approval Gates
 
-**Status:** Proposed  
+**Status:** Implemented  
 **Author:** Inteligens  
-**Target Version:** v1.1  
+**Target Version:** v1.0.0  
+**Implemented in:** v1.0.0  
 **Last Updated:** 2026-03-02
 
 ---
@@ -24,7 +25,9 @@ The goal is to improve **execution safety, auditability, and governance discipli
 
 ## 2. Motivation
 
-Current behavior:
+**Historical Context:** This RFC was proposed for v1.1, but was implemented earlier in v1.0.0 due to its critical importance for governance.
+
+Original problem (pre-v1.0):
 
 - Steps advance via `--done`
 - No formal approval semantics
@@ -37,6 +40,8 @@ Risks:
 - weak audit trail for sensitive steps
 
 Approval Gates solve this by introducing an explicit **awaiting_approval** state.
+
+**Status:** ✅ **Implemented in v1.0.0** — All features described in this RFC are now available.
 
 ---
 
@@ -197,14 +202,14 @@ Status: APPROVED
 
 ## 8. Initial Gated Phases
 
-For v1.1, planner SHOULD gate:
+**Implemented in v1.0.0:** The planner gates the following phases:
 
 - architecture decisions
 - security reviews
 - release steps
 - sprint closure
 
-Planner MAY evolve heuristics in future versions.
+Planner MAY evolve heuristics in future versions (v1.1+).
 
 ---
 
@@ -219,7 +224,7 @@ No breaking changes expected for v1.0 users.
 
 ---
 
-## 10. Future Extensions (Non‑Goals for v1.1)
+## 10. Future Extensions (Non‑Goals for v1.1+)
 
 Explicitly out of scope:
 
@@ -236,12 +241,14 @@ These MAY be considered in future RFCs.
 
 This RFC is considered implemented when:
 
-- [ ] planner can emit `requires_approval`
-- [ ] runner enters `awaiting_approval`
-- [ ] `--next` blocks correctly
-- [ ] `--approve` transitions state
-- [ ] journal records approval
-- [ ] legacy plans still run
+- [x] planner can emit `requires_approval`
+- [x] runner enters `awaiting_approval`
+- [x] `--next` blocks correctly
+- [x] `--approve` transitions state
+- [x] journal records approval
+- [x] legacy plans still run
+
+**Status:** ✅ **All criteria met in v1.0.0**
 
 ---
 
@@ -257,9 +264,15 @@ This RFC is considered implemented when:
 
 ## 13. Decision
 
-**Status:** READY FOR IMPLEMENTATION (post review)
+**Status:** ✅ **IMPLEMENTED in v1.0.0**
 
-This feature is considered **foundational for safe semi‑autonomous execution** in future versions of the Inteligens Agents Framework.
+This feature was implemented in v1.0.0 and is considered **foundational for safe semi‑autonomous execution** in the Inteligens Agents Framework.
+
+**Implementation Notes:**
+- All acceptance criteria met
+- Approval gates working in production
+- Journal tracking operational
+- Backward compatibility maintained
 
 ---
 

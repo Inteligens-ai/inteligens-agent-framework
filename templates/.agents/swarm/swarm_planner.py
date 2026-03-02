@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 import json, argparse, subprocess, os
-from datetime import datetime
+from datetime import datetime, timezone
 
-NOW = datetime.utcnow().isoformat() + "Z"
+NOW = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
 BASE = ".agents/swarm"
 
 PHASE_ORDER = {"plan":1,"design":2,"build":3,"test":4,"release":5}

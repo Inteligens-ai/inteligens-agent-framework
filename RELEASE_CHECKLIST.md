@@ -1,4 +1,6 @@
-# Release Checklist — v1.0.0
+# Release Checklist — Inteligens Agents Framework
+
+> Generic release checklist. Update version numbers as needed for each release.
 
 ## Pre-flight
 

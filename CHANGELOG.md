@@ -154,5 +154,5 @@ First stable release of the Inteligens Agents Framework — an Agent Operating F
 
 ---
 
-[1.0.1]: https://github.com/inteligens/agents-framework/releases/tag/v1.0.1
-[1.0.0]: https://github.com/inteligens/agents-framework/releases/tag/v1.0.0
+[1.0.1]: https://github.com/Inteligens-ai/inteligens-agent-framework/releases/tag/v1.0.1
+[1.0.0]: https://github.com/Inteligens-ai/inteligens-agent-framework/releases/tag/v1.0.0

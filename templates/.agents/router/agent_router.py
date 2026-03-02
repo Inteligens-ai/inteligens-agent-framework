@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 import os, sys, json, argparse, re
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Dict, Any, List, Tuple
 
 BASE = ".agents"
 DEFAULT_RUNTIME_DIR = os.path.join(BASE, "runtime")
-NOW_ISO = datetime.utcnow().isoformat() + "Z"
+NOW_ISO = datetime.now(timezone.utc).isoformat() + "Z"
 
 def load_json(path: str) -> Dict[str, Any]:
     with open(path, "r", encoding="utf-8") as f:
