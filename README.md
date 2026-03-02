@@ -240,7 +240,15 @@ These are **intentionally not committed** to a release:
 
 ## 🤝 Contributing
 
-Contributions are welcome. Please open an issue before large changes.
+Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for:
+
+- Branch workflow and guidelines
+- Commit message conventions
+- Pull request process
+- Release process
+- Development setup
+
+**Quick start:** Open an issue before large changes, then follow the branch workflow in `CONTRIBUTING.md`.
 
 ---
 

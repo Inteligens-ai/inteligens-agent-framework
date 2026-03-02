@@ -7,6 +7,67 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.1] — 2026-03-02
+
+### 🔧 Improvements & Fixes
+
+#### Execution Runner Enhancements
+- **Added `--skip` command** to skip non-applicable steps during execution
+- **Enhanced `--next` command prompts** with more context:
+  - Overall task description
+  - Last 3 completed steps summary
+  - Phase-specific instructions
+  - References to relevant artifacts (BACKLOG.md, ARCHITECTURE.md, etc.)
+- **Improved approval flow logic** to prevent premature blocking
+- **Better error messages** for approval-related operations
+
+#### Documentation
+- **Added Language-Specific Guide** (`docs/guides/LANGUAGE_SPECIFIC_GUIDE.md`)
+  - Setup instructions for Python, Node.js, Go, Rust, Java, C#
+  - Dependency management best practices
+  - Running and testing projects per language
+- **Added Scrum Guide** (`docs/guides/SCRUM_GUIDE.md`)
+  - How the framework implements Scrum methodology
+  - Sprint artifacts and execution flow
+  - Agent roles in Scrum context
+  - Approval gates in Scrum
+- **Added Contributing Guide** (`CONTRIBUTING.md`)
+  - Branch workflow (main, develop, feature, fix, release, hotfix)
+  - Commit message conventions
+  - Pull request process
+  - Release process
+- **Updated Usage Guide** with architecture decisions section
+- **Updated README.md** with documentation links section
+
+#### Example Project
+- **Complete hello-agents example** (`examples/hello-agents/`)
+  - Full FastAPI REST API with health check endpoints
+  - Comprehensive test suite (≥80% coverage)
+  - Complete documentation (Architecture, ADR, Security Review, Threat Model)
+  - Docker and deployment configurations
+  - Demonstrates complete framework execution flow (all 13 steps)
+
+#### Bug Fixes
+- Fixed `cmd_next()` blocking logic for steps requiring approval
+- Fixed execution flow to properly handle approval gates
+- Corrected `datetime.utcnow()` deprecation warnings
+- Fixed missing dependency handling in example projects
+
+#### Documentation Improvements
+- Documented iterative error correction process
+- Added troubleshooting section for agent errors
+- Documented fixed execution flow limitation
+- Updated all guides with correct paths and commands
+
+### 📝 Notes
+
+- This is a patch release with improvements and bug fixes
+- No breaking changes
+- All changes are backward compatible
+- Example project serves as proof of concept for the framework
+
+---
+
 ## [1.0.0] — 2026-03-02
 
 ### 🎉 Initial Release
@@ -93,4 +154,5 @@ First stable release of the Inteligens Agents Framework — an Agent Operating F
 
 ---
 
+[1.0.1]: https://github.com/inteligens/agents-framework/releases/tag/v1.0.1
 [1.0.0]: https://github.com/inteligens/agents-framework/releases/tag/v1.0.0
