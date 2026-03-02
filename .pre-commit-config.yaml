@@ -1,0 +1,8 @@
+repos:
+  - repo: local
+    hooks:
+      - id: block-private-runtime
+        name: Block private runtime files
+        entry: bash scripts/prevent_private_runtime.sh
+        language: system
+        pass_filenames: false

@@ -1,0 +1,444 @@
+{
+  "generated": "2026-03-02T05:32:49.361608Z",
+  "public_version": "1.0.0",
+  "internal_lineage": "v8-hybrid",
+  "agents": {
+    "product/product-owner.md": {
+      "title": "Product Owner",
+      "tags": [
+        "product",
+        "backlog",
+        "roi",
+        "scope",
+        "prioritize",
+        "mvp",
+        "user-stories"
+      ],
+      "commands": [
+        "/prioritize-backlog",
+        "/define-scope",
+        "/write-user-stories"
+      ],
+      "guidelines": [
+        "Translate user pain into backlog items with acceptance criteria.",
+        "Keep scope small and value-focused."
+      ],
+      "handoffs": {
+        "architecture": "engineering/staff-architect.md",
+        "delivery": "project-management/scrum-master.md"
+      },
+      "definition_of_done": [
+        "Backlog items have clear AC.",
+        "Risks and dependencies documented."
+      ]
+    },
+    "project-management/scrum-master.md": {
+      "title": "Scrum Master",
+      "tags": [
+        "scrum",
+        "sprint",
+        "ceremony",
+        "blockers",
+        "flow",
+        "planning"
+      ],
+      "commands": [
+        "/run-planning",
+        "/remove-blocker",
+        "/define-dod"
+      ],
+      "guidelines": [
+        "Enforce Definition of Done.",
+        "Keep cycle time low; surface blockers fast."
+      ],
+      "handoffs": {
+        "product": "product/product-owner.md",
+        "engineering": "engineering/tech-lead.md"
+      },
+      "definition_of_done": [
+        "Sprint goal defined.",
+        "Board updated with owners and estimates."
+      ]
+    },
+    "engineering/staff-architect.md": {
+      "title": "Staff Architect",
+      "tags": [
+        "architecture",
+        "adr",
+        "c4",
+        "boundary",
+        "schema",
+        "design",
+        "integration"
+      ],
+      "commands": [
+        "/design-architecture",
+        "/write-adr",
+        "/define-boundaries"
+      ],
+      "guidelines": [
+        "Prefer simple, evolvable architecture.",
+        "Capture trade-offs explicitly."
+      ],
+      "handoffs": {
+        "security": "security/appsec-engineer.md",
+        "devops": "engineering/devops-sre.md"
+      },
+      "definition_of_done": [
+        "ADR created/updated.",
+        "Interfaces and boundaries specified."
+      ]
+    },
+    "engineering/tech-lead.md": {
+      "title": "Tech Lead",
+      "tags": [
+        "techlead",
+        "refactor",
+        "standards",
+        "review",
+        "quality",
+        "planning"
+      ],
+      "commands": [
+        "/plan-implementation",
+        "/review-pr",
+        "/define-standards"
+      ],
+      "guidelines": [
+        "Keep implementation aligned with architecture.",
+        "Demand tests or justification."
+      ],
+      "handoffs": {
+        "qa": "testing/qa-strategist.md",
+        "frontend": "engineering/frontend-engineer.md",
+        "backend": "engineering/backend-engineer.md"
+      },
+      "definition_of_done": [
+        "Implementation plan is actionable.",
+        "Risks + mitigations listed."
+      ]
+    },
+    "engineering/backend-engineer.md": {
+      "title": "Backend Engineer",
+      "tags": [
+        "backend",
+        "api",
+        "endpoint",
+        "service",
+        "db",
+        "schema",
+        "auth"
+      ],
+      "commands": [
+        "/build-api",
+        "/db-migration",
+        "/refactor-service"
+      ],
+      "guidelines": [
+        "Prefer clear contracts and typed schemas.",
+        "Write tests for critical paths."
+      ],
+      "handoffs": {
+        "architecture": "engineering/staff-architect.md",
+        "qa": "testing/api-tester.md",
+        "security": "security/appsec-engineer.md"
+      },
+      "definition_of_done": [
+        "Endpoints documented.",
+        "Tests added.",
+        "Migrations reversible."
+      ]
+    },
+    "engineering/frontend-engineer.md": {
+      "title": "Frontend Engineer",
+      "tags": [
+        "frontend",
+        "ui",
+        "react",
+        "component",
+        "a11y",
+        "ux",
+        "state"
+      ],
+      "commands": [
+        "/build-ui",
+        "/refactor-component",
+        "/check-a11y"
+      ],
+      "guidelines": [
+        "Keep components small and reusable.",
+        "A11y and performance are non-negotiable."
+      ],
+      "handoffs": {
+        "design": "design/ui-designer.md",
+        "qa": "testing/qa-strategist.md"
+      },
+      "definition_of_done": [
+        "No a11y regressions.",
+        "UI matches spec.",
+        "State handling sane."
+      ]
+    },
+    "engineering/ai-engineer.md": {
+      "title": "AI Engineer",
+      "tags": [
+        "ai",
+        "llm",
+        "rag",
+        "embedding",
+        "inference",
+        "vision",
+        "cv",
+        "prompt"
+      ],
+      "commands": [
+        "/setup-rag",
+        "/evaluate-model",
+        "/optimize-inference"
+      ],
+      "guidelines": [
+        "Prefer measurable evals over vibes.",
+        "Document prompts and datasets."
+      ],
+      "handoffs": {
+        "data": "engineering/data-engineer.md",
+        "security": "security/appsec-engineer.md",
+        "devops": "engineering/devops-sre.md"
+      },
+      "definition_of_done": [
+        "Eval plan exists.",
+        "Latency/memory constraints acknowledged.",
+        "Artifacts reproducible."
+      ]
+    },
+    "engineering/data-engineer.md": {
+      "title": "Data Engineer",
+      "tags": [
+        "data",
+        "pipeline",
+        "etl",
+        "lakehouse",
+        "spark",
+        "parquet",
+        "delta",
+        "quality"
+      ],
+      "commands": [
+        "/design-pipeline",
+        "/optimize-io",
+        "/data-quality-checks"
+      ],
+      "guidelines": [
+        "Prefer incremental pipelines.",
+        "Enforce data contracts + quality checks."
+      ],
+      "handoffs": {
+        "ai": "engineering/ai-engineer.md",
+        "devops": "engineering/devops-sre.md"
+      },
+      "definition_of_done": [
+        "Pipeline idempotent.",
+        "DQ checks defined.",
+        "Storage layout documented."
+      ]
+    },
+    "engineering/devops-sre.md": {
+      "title": "DevOps / SRE",
+      "tags": [
+        "devops",
+        "sre",
+        "docker",
+        "ci/cd",
+        "deploy",
+        "observability",
+        "monitoring",
+        "secrets"
+      ],
+      "commands": [
+        "/gen-dockerfile",
+        "/setup-ci-cd",
+        "/monitor-stack"
+      ],
+      "guidelines": [
+        "Automate build/test/release.",
+        "Prefer least privilege + secrets hygiene."
+      ],
+      "handoffs": {
+        "security": "security/appsec-engineer.md",
+        "qa": "testing/qa-strategist.md"
+      },
+      "definition_of_done": [
+        "CI green.",
+        "Deploy steps documented.",
+        "Metrics/logs available."
+      ]
+    },
+    "security/appsec-engineer.md": {
+      "title": "AppSec Engineer",
+      "tags": [
+        "security",
+        "appsec",
+        "threat-model",
+        "lgpd",
+        "privacy",
+        "compliance",
+        "authz",
+        "rbac"
+      ],
+      "commands": [
+        "/threat-model",
+        "/security-review",
+        "/privacy-check"
+      ],
+      "guidelines": [
+        "Default deny. Validate authz boundaries.",
+        "Threat-model anything with sensitive data."
+      ],
+      "handoffs": {
+        "architecture": "engineering/staff-architect.md",
+        "qa": "testing/qa-strategist.md"
+      },
+      "definition_of_done": [
+        "Threat model created/updated.",
+        "Findings tracked with severity."
+      ]
+    },
+    "testing/qa-strategist.md": {
+      "title": "QA Strategist",
+      "tags": [
+        "qa",
+        "test",
+        "quality",
+        "coverage",
+        "release-gate",
+        "regression"
+      ],
+      "commands": [
+        "/test-strategy",
+        "/quality-gate",
+        "/test-plan"
+      ],
+      "guidelines": [
+        "Prefer few high-value tests over many weak ones.",
+        "Define release gates early."
+      ],
+      "handoffs": {
+        "api": "testing/api-tester.md",
+        "perf": "testing/performance-benchmarker.md"
+      },
+      "definition_of_done": [
+        "Test plan exists.",
+        "Release gate defined.",
+        "Coverage critical paths."
+      ]
+    },
+    "testing/api-tester.md": {
+      "title": "API Tester",
+      "tags": [
+        "api",
+        "contract",
+        "testing",
+        "integration",
+        "negative-tests"
+      ],
+      "commands": [
+        "/test-endpoints",
+        "/contract-tests",
+        "/integration-tests"
+      ],
+      "guidelines": [
+        "Contract tests for every public endpoint.",
+        "Validate error shapes + status codes."
+      ],
+      "handoffs": {
+        "backend": "engineering/backend-engineer.md",
+        "qa": "testing/qa-strategist.md"
+      },
+      "definition_of_done": [
+        "Contracts validated.",
+        "Negative tests included."
+      ]
+    },
+    "testing/performance-benchmarker.md": {
+      "title": "Performance Benchmarker",
+      "tags": [
+        "performance",
+        "benchmark",
+        "latency",
+        "load",
+        "stress",
+        "profiling"
+      ],
+      "commands": [
+        "/load-test",
+        "/latency-test",
+        "/profile-bottlenecks"
+      ],
+      "guidelines": [
+        "Benchmark before optimize.",
+        "Capture environment + configs."
+      ],
+      "handoffs": {
+        "devops": "engineering/devops-sre.md",
+        "ai": "engineering/ai-engineer.md"
+      },
+      "definition_of_done": [
+        "Baseline captured.",
+        "Bottlenecks identified.",
+        "Regression guardrails suggested."
+      ]
+    },
+    "design/ui-designer.md": {
+      "title": "UI Designer",
+      "tags": [
+        "design",
+        "ui",
+        "system",
+        "components",
+        "layout",
+        "tokens"
+      ],
+      "commands": [
+        "/design-system",
+        "/hi-fi-prototype"
+      ],
+      "guidelines": [
+        "Prefer simple, consistent UI patterns.",
+        "Design for dev handoff (tokens/components)."
+      ],
+      "handoffs": {
+        "frontend": "engineering/frontend-engineer.md"
+      },
+      "definition_of_done": [
+        "Design specs include states + edge cases.",
+        "Components mapped."
+      ]
+    },
+    "design/ux-researcher.md": {
+      "title": "UX Researcher",
+      "tags": [
+        "ux",
+        "research",
+        "journey",
+        "usability",
+        "accessibility"
+      ],
+      "commands": [
+        "/user-journey",
+        "/usability-test"
+      ],
+      "guidelines": [
+        "Validate assumptions with lightweight research.",
+        "Prioritize accessibility."
+      ],
+      "handoffs": {
+        "product": "product/product-owner.md",
+        "design": "design/ui-designer.md"
+      },
+      "definition_of_done": [
+        "Findings summarized.",
+        "Actionable recommendations listed."
+      ]
+    }
+  }
+}

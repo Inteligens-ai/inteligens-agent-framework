@@ -1,0 +1,44 @@
+# =========================
+# Runtime / State
+# =========================
+.agents/swarm/execution_state.json
+.agents/swarm/execution_journal.md
+.agents/swarm/execution_plan.json
+.agents/swarm/decision_log.json
+.agents/runtime/
+confidence_log.json
+execution_plan.json
+
+# =========================
+# Examples (temporary)
+# =========================
+examples/face-access-control/
+
+# =========================
+# Internal docs
+# =========================
+docs/pt-br/
+
+# =========================
+# Logs
+# =========================
+*.log
+logs/
+telemetry/
+
+# =========================
+# Secrets
+# =========================
+.env
+.env.*
+secrets/
+*.key
+*.pem
+
+# =========================
+# Python
+# =========================
+__pycache__/
+*.pyc
+.venv/
+venv/
