@@ -92,6 +92,20 @@ We still lack:
 
 ---
 
+### 5. Fixed execution flow
+
+The planner currently generates a fixed sequence of 13 steps optimized for software development projects:
+
+- Always includes: Product Owner, Scrum Master, Staff Architect, Tech Lead, Backend, Frontend, AI Engineer, DevOps, QA, AppSec, Release Manager, Sprint Reviewer, Sprint Closer
+- Focused on software development workflow (plan → design → build → test → release)
+- Does not automatically adapt to other project types (data science, research, ML pipelines, etc.)
+
+**Workaround:** Create custom execution plans manually for different project types.
+
+**Future (v1.2+):** Intelligent planning with semantic task understanding will generate adaptive flows based on project type and requirements.
+
+---
+
 # 🧠 Decision Model (Target)
 
 The framework will evolve toward a **three-level decision system**.

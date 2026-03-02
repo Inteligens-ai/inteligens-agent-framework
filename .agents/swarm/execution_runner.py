@@ -198,12 +198,40 @@ def cmd_approve():
 
     print("✅ Step approved.")
 
+def cmd_skip():
+    state = load_json(STATE_FILE)
+    if not state:
+        raise SystemExit("❌ State not initialized")
+
+    step_idx = state["current_step"] - 1
+    plan = state["plan"]
+
+    if step_idx >= len(plan):
+        print("🏁 Nothing to skip.")
+        return
+
+    step = plan[step_idx]
+
+    # Registrar skip no journal
+    append_journal(f"### Skip Step {step['step']} — {now_utc()}")
+    append_journal(f"Agent: `{step.get('agent', 'unknown')}`")
+    append_journal(f"Status: SKIPPED")
+    append_journal(f"Reason: Step not applicable to current project")
+    
+    # Avançar para o próximo step
+    state["current_step"] += 1
+    save_json(STATE_FILE, state)
+
+    print(f"⏭️  Step {step['step']} skipped.")
+    print(f"Reason: Step not applicable to current project")
+
 def main():
     p = argparse.ArgumentParser(description="Execution Runner — Step-by-step execution with Approval Gates")
     p.add_argument("--init", nargs="?", const=".agents/swarm/execution_plan.json",
                    help="Initialize execution (default: .agents/swarm/execution_plan.json)")
     p.add_argument("--next", action="store_true", help="Show next step")
     p.add_argument("--done", action="store_true", help="Mark current step as done")
+    p.add_argument("--skip", action="store_true", help="Skip current step (not applicable)")
     p.add_argument("--approve", action="store_true", help="Approve current gated step")
     args = p.parse_args()
 
@@ -213,6 +241,8 @@ def main():
         cmd_next()
     elif args.done:
         cmd_done()
+    elif args.skip:
+        cmd_skip()
     elif args.approve:
         cmd_approve()
     else:

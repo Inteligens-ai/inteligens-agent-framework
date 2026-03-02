@@ -150,7 +150,28 @@ The framework intentionally:
 The framework supports optional approval gates between critical steps.
 
 See:
-docs/architecture/APPROVAL_GATES.md
+- `docs/architecture/APPROVAL_GATES.md`
+
+---
+
+## 📚 Documentation
+
+### Getting Started
+
+- **[Usage Guide](docs/guides/USAGE_GUIDE.md)** - How to operate the framework
+- **[Language-Specific Guide](docs/guides/LANGUAGE_SPECIFIC_GUIDE.md)** - Setup for Python, Node.js, Go, Rust, Java, C#
+- **[Scrum Guide](docs/guides/SCRUM_GUIDE.md)** - How the framework implements Scrum
+
+### Architecture & Design
+
+- **[Agents Framework](docs/guides/AGENTS_FRAMEWORK.md)** - Framework overview
+- **[Approval Gates](docs/architecture/APPROVAL_GATES.md)** - Human checkpoints
+- **[RFC-001: Approval Gates](docs/rfcs/RFC-001-approval-gates.md)** - Technical specification
+
+### Roadmap
+
+- **[Public Roadmap](docs/roadmap/PUBLIC_ROADMAP.md)** - High-level product direction
+- **[Evolution Roadmap](docs/roadmap/EVOLUTION_ROADMAP.md)** - Technical evolution strategy
 
 ---
 
