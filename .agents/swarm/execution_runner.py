@@ -73,6 +73,17 @@ def cmd_next():
             print(f"\nStep {prev_step['step']} ({prev_step.get('agent')}) is waiting for approval.")
             return
 
+    # Carregar task do plan (se disponível)
+    plan_file = load_json(".agents/swarm/execution_plan.json")
+    task = plan_file.get("task", "") if plan_file else ""
+    
+    # Listar steps anteriores completados
+    completed_steps = []
+    for i in range(step_idx):
+        prev = plan[i]
+        if i in state.get("approved_steps", []) or not prev.get("requires_approval"):
+            completed_steps.append(f"Step {prev['step']}: {prev.get('agent', '').split('/')[-1].replace('.md', '')}")
+    
     # Sempre mostrar o step atual (permitir execução)
     print("# =====================================")
     print(f"# STEP {step['step']} — phase={step.get('phase')}")
@@ -80,7 +91,48 @@ def cmd_next():
     if step.get("requires_approval"):
         print("# ⚠️  This step requires approval after completion")
     print("# =====================================\n")
-    print("Follow the agent persona and produce concrete deliverables.")
+    
+    # Contexto da tarefa
+    if task:
+        print("## Task")
+        print(f"{task}\n")
+    
+    # Steps anteriores
+    if completed_steps:
+        print("## Previous Steps Completed")
+        for cs in completed_steps[-3:]:  # Mostrar últimos 3
+            print(f"- {cs}")
+        print()
+    
+    # Instruções baseadas na fase
+    phase = step.get("phase", "")
+    phase_instructions = {
+        "plan": "Review and create planning artifacts (backlog, sprint plan, etc.)",
+        "design": "Create architecture and design documents (ADR, architecture docs, etc.)",
+        "build": "Implement code, tests, and configuration files",
+        "test": "Create test suites, run tests, and validate quality",
+        "release": "Prepare release documentation and finalize deliverables",
+        "review": "Review completed work and validate against acceptance criteria",
+        "closure": "Close sprint, document learnings, and archive artifacts"
+    }
+    
+    instruction = phase_instructions.get(phase, "Produce deliverables aligned to the current phase")
+    
+    print("## Instructions")
+    print(f"- Read the agent persona file: `{step.get('agent')}`")
+    print(f"- {instruction}")
+    print("- Produce concrete deliverables (code/docs) ready to commit")
+    print("- Keep scope minimal and shippable")
+    
+    # Referências a artefatos comuns
+    if phase in ["plan", "design"]:
+        print("\n## Reference Artifacts")
+        if phase == "plan":
+            print("- Check `BACKLOG.md` and `SPRINT_PLAN.md` if they exist")
+        elif phase == "design":
+            print("- Check `docs/ARCHITECTURE.md` and `docs/ADR-*.md` if they exist")
+    
+    print()
 
 def cmd_done():
     state = load_json(STATE_FILE)
