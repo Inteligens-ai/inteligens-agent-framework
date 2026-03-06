@@ -18,14 +18,36 @@
 - Enhanced execution visibility
 - Sprint metrics enrichment
 - Improved approval observability
+- Execution navigation (`--back` command)
+- Action safety (confirmation prompts, undo/revert)
+- Ad-hoc review mode with full observability (`--review <agent>`)
+- Ad-hoc agent sessions (`--session`, `--session-log`, `--session-close`) for tracked direct agent calls
+- Step dependency management (`--block`, `--done --partial`, `--resolve`)
+- Automatic dependency resolution detection
+- Backward navigation for blocked steps
+- Production Readiness Sprint (`--production-sprint`) for structured MVP → Production transition
+- Bug Triage and Fix Workflow (`--report-bug`, `--triage-bug`, `--bug-fix-sprint`) for structured bug handling and Scrum integration
 
 ---
 
-## 🔜 v1.2 — Intelligent Planning
+## 🔜 v1.2 — Advanced Dependency Management
+- Automatic planning review triggers (PO + Scrum Master)
+- Intelligent workaround suggestions
+- Blocking metrics and analytics (`--metrics`)
+- Circular dependency detection
+- Step reordering suggestions (`--suggest-reorder`)
+- Backlog integration suggestions
+
+---
+
+## 🔜 v1.3 — Intelligent Planning
 - Backlog ingestion
 - Context‑aware planning
 - Smarter task decomposition
 - Reduced prompt friction
+- **Adaptive project type detection** (ML, Hardware, IoT, Data Science, Security, Edge, etc.)
+- **Project-specific step templates** (automatic step selection based on project type)
+- **Hybrid project support** (combines steps from multiple project types)
 
 ---
 

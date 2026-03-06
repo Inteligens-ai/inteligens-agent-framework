@@ -1,9 +1,11 @@
 # Inteligens Agents Framework
 
-<p align="center">
-  <strong>Agent‑Native Engineering with Human Governance</strong><br/>
-  A lightweight orchestration framework for multi‑agent software teams.
-</p>
+Agent-Native Engineering with Human Governance
+
+> A governance-first execution framework for multi-agent AI systems.
+
+A lightweight orchestration layer designed to coordinate specialized AI agents 
+as a senior engineering team — while keeping humans firmly in control.
 
 <p align="center">
   <img alt="version" src="https://img.shields.io/badge/version-v1.0.1-blue">
@@ -14,19 +16,23 @@
 
 ---
 
-## 🚀 Overview
+🚀 Overview
 
-**Inteligens Agents Framework** is an Agent Operating Framework (AOF) designed to orchestrate specialized AI agents working as a senior engineering team — while keeping humans firmly in control.
+Inteligens Agents Framework is an Agent Operating Framework (AOF) 
+built around one core principle:
+
+Autonomy without governance is chaos.
 
 It enables:
 
-- 🧠 multi‑agent planning
-- 🧭 structured execution flows
-- 🛡️ human‑in‑the‑loop governance
-- ⚡ IDE‑agnostic operation (Cursor, VSCode, CLI, Antigravity)
-- 🏗️ sprint‑aware delivery
+🧠 multi-agent planning  
+🧭 structured execution flows  
+🛡️ explicit human-in-the-loop approval gates  
+⚡ IDE-agnostic operation (Cursor, VSCode, CLI, Antigravity)  
+🏗️ sprint-aware delivery  
 
-> This is **not** a fully autonomous system by design.
+This is not a fully autonomous system by design.
+It is a controlled execution environment.
 
 ---
 
@@ -167,6 +173,11 @@ See:
 - **[Agents Framework](docs/guides/AGENTS_FRAMEWORK.md)** - Framework overview
 - **[Approval Gates](docs/architecture/APPROVAL_GATES.md)** - Human checkpoints
 - **[RFC-001: Approval Gates](docs/rfcs/RFC-001-approval-gates.md)** - Technical specification
+- **[RFC-002: Step Dependencies](docs/rfcs/RFC-002-step-dependencies.md)** - Dependency management (v1.1)
+- **[RFC-003: Advanced Dependency Management](docs/rfcs/RFC-003-advanced-dependency-management.md)** - Intelligent assistance (v1.2)
+- **[RFC-004: Ad-hoc Agent Sessions](docs/rfcs/RFC-004-ad-hoc-agent-sessions.md)** - Tracked direct agent calls (v1.1)
+- **[RFC-005: Production Readiness Sprint](docs/rfcs/RFC-005-production-readiness-sprint.md)** - MVP → Production transition (v1.1)
+- **[RFC-006: Bug Triage and Fix Workflow](docs/rfcs/RFC-006-bug-triage-and-fix-workflow.md)** - Structured bug handling (v1.1)
 
 ### Roadmap
 
@@ -193,14 +204,33 @@ See:
 
 Focus: production safety and execution discipline.
 
-
 - Improved execution observability
 - Sprint metrics enrichment
 - Stronger auditability of agent actions
+- Execution navigation (`--back` command)
+- Step dependency management (`--block`, `--done --partial`, `--resolve`)
+- Automatic dependency resolution detection
+- Ad-hoc review mode with full observability
+- Ad-hoc agent sessions (`--session`, `--session-log`, `--session-close`) for tracked direct agent calls
+- Production Readiness Sprint (`--production-sprint`) for structured MVP → Production transition
+- Bug Triage and Fix Workflow (`--report-bug`, `--triage-bug`, `--bug-fix-sprint`) for structured bug handling
 
 ---
 
-### 🟡 v1.2 — Intelligent Planning (Planned)
+### 🟡 v1.2 — Advanced Dependency Management (Planned)
+
+Focus: intelligent dependency assistance and planning integration.
+
+- Automatic planning review triggers (PO + Scrum Master)
+- Intelligent workaround suggestions
+- Blocking metrics and analytics (`--metrics`)
+- Circular dependency detection
+- Step reordering suggestions (`--suggest-reorder`)
+- Backlog integration suggestions
+
+---
+
+### 🟡 v1.3 — Intelligent Planning (Planned)
 
 Focus: smarter planning from real inputs.
 
@@ -208,6 +238,9 @@ Focus: smarter planning from real inputs.
 - Context-aware planning
 - Smarter task decomposition
 - Improved router confidence scoring
+- **Adaptive project type detection** (ML, Hardware, IoT, Data Science, Security, Edge, etc.)
+- **Project-specific step templates** (automatic step selection based on project type)
+- **Hybrid project support** (combines steps from multiple project types)
 
 ---
 

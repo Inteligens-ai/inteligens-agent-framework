@@ -422,11 +422,143 @@ The framework tracks:
 
 **Current (v1.0):** Framework focuses on single-sprint execution.
 
-**Future (v2.0):** Multi-sprint orchestration with:
+**Future (v1.1+):** Production Readiness Sprint support:
+- `--production-sprint` command for production-focused sprints
+- Automatic extraction of production items from MVP backlog
+- Context preservation from previous sprint
+- Backlog continuity between sprints
+- Structured MVP → Production transition
+
+**Future (v2.0):** Full multi-sprint orchestration with:
 - Sprint chaining
 - Backlog continuity
 - Cross-sprint dependencies
 - Long-term planning
+- Multiple sprint types (MVP, production, enhancement, maintenance)
+
+### MVP to Production Workflow (v1.1+)
+
+**Sprint 1: MVP Development**
+```bash
+python execution_runner.py --init
+# Task: "Build [project] MVP"
+# ... executes MVP sprint ...
+# Closes with production items in backlog
+```
+
+**Sprint 2: Production Readiness**
+```bash
+python execution_runner.py --production-sprint
+# Automatically:
+#   - Detects previous sprint
+#   - Extracts production items
+#   - Creates production-focused plan
+#   - Preserves MVP context
+# Task: "Prepare [project] for production deployment"
+# ... executes production-focused steps ...
+```
+
+**Benefits:**
+- Structured transition from MVP to production
+- No context loss between sprints
+- Automatic backlog extraction
+- Production-focused execution
+
+**See:** [RFC-005: Production Readiness Sprint](../rfcs/RFC-005-production-readiness-sprint.md)
+
+---
+
+## 🐛 Bug Handling in Scrum (v1.1+)
+
+**Note:** This section describes features planned for v1.1+. For current workarounds, see [Current Limitations](#-current-limitations) below.
+
+In Scrum, bugs are treated as backlog items and follow the same sprint process as features. The framework provides structured bug reporting, triage, and fix workflows.
+
+### Bug Lifecycle in Scrum
+
+1. **Bug Discovery**: Bug is discovered during execution or by a human
+2. **Bug Reporting**: Bug is reported to framework (`--report-bug`)
+3. **Bug Triage**: Bug is prioritized and estimated (`--triage-bug`)
+4. **Sprint Assignment**: Bug is assigned to current sprint, next sprint, or hotfix
+5. **Bug Fix**: Bug is fixed via ad-hoc session or bug-fix sprint
+6. **Verification**: Bug fix is tested and verified
+7. **Closure**: Bug is marked as fixed and closed
+
+### Bug Severity and Priority
+
+**Severity Levels:**
+- **Critical**: System down, data loss, security breach
+- **High**: Major feature broken, significant impact
+- **Medium**: Feature partially broken, workaround exists
+- **Low**: Minor issue, cosmetic, edge case
+
+**Priority Levels:**
+- **Critical**: Must fix immediately (hotfix)
+- **High**: Fix in current sprint if capacity allows
+- **Medium**: Fix in next sprint
+- **Low**: Fix when time permits
+
+### Bug Fix Strategies
+
+**1. Immediate Fix (Ad-hoc Session)**
+
+For bugs discovered during execution:
+
+```bash
+# Report bug
+python execution_runner.py --report-bug \
+    --description "Authentication fails" \
+    --severity medium \
+    --current-step 5
+
+# Fix immediately with ad-hoc session
+python execution_runner.py --session backend-engineer.md --bug BUG-001 --link-step 5
+# ... fix bug ...
+python execution_runner.py --session-close <session-id> --bug-fixed BUG-001
+```
+
+**2. Bug-Fix Sprint**
+
+For critical bugs or structured fix workflow:
+
+```bash
+# Create bug-fix sprint
+python execution_runner.py --bug-fix-sprint --bug-id BUG-001 --hotfix
+```
+
+**3. Next Sprint Assignment**
+
+For non-critical bugs:
+
+```bash
+# Triage bug
+python execution_runner.py --triage-bug BUG-001
+# Assign to next sprint
+
+# Next sprint includes bug fix
+python execution_runner.py --init
+# Task: "Fix bug BUG-001 and add feature X"
+```
+
+### Bug Metrics
+
+Track bug resolution metrics:
+- **Bug density**: Bugs per sprint
+- **Bug resolution time**: Time from report to fix
+- **Bug severity distribution**: Critical vs High vs Medium vs Low
+- **Bug discovery source**: Agent vs Human vs System
+
+### Integration with Sprint Artifacts
+
+Bugs are automatically integrated into Scrum artifacts:
+
+- **Backlog**: Bugs added as backlog items
+- **Sprint Plan**: Bugs included in sprint planning
+- **Sprint Board**: Bugs tracked on sprint board
+- **Sprint Review**: Bugs reviewed in sprint review
+- **Sprint Closure**: Bug fixes included in sprint closure
+
+**See:** [RFC-006: Bug Triage and Fix Workflow](../rfcs/RFC-006-bug-triage-and-fix-workflow.md) for complete specification.
 
 ---
 

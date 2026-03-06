@@ -5,6 +5,7 @@
 .agents/swarm/execution_journal.md
 .agents/swarm/execution_plan.json
 .agents/swarm/decision_log.json
+.agents/swarm/sessions/
 .agents/runtime/
 confidence_log.json
 execution_plan.json
