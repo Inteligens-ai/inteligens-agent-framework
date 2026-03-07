@@ -68,7 +68,9 @@ Direct agent calls outside the execution plan (quick fixes, iterations) bypass f
 
 Steps cannot be marked as blocked or partially complete when they depend on a future step. Workaround is manual state editing.
 
-**Target (v1.1):** `--block`, `--done --partial`, `--resolve` commands.
+More critically, when a step is blocked by a future step, there is no mechanism to advance execution to that future step out of order. The operator is forced to make untracked manual agent calls — losing all journal traceability for what is technically a planned step execution. This is not an ad-hoc call; it is a planned step run out of sequence to resolve a dependency. The framework has no concept for this.
+
+**Target (v1.1):** `--block --depends-on <step>`, `--done --partial`, `--resolve <context>`, `--run-ahead <step>`.
 
 ---
 
@@ -77,6 +79,16 @@ Steps cannot be marked as blocked or partially complete when they depend on a fu
 The planner and runner have no knowledge of the existing codebase: stack, architecture patterns, ADRs. Every prompt starts from zero.
 
 **Target (v1.2):** Stack detection (requirements.txt, package.json, go.mod, etc.).
+
+---
+
+### 6. No inter-step dependency model in plan generation
+
+Dependencies between steps are only discoverable at execution time, not at planning time. The planner has no awareness that step N may depend on step M for specific deliverables. Dependency conflicts surface mid-sprint, when correcting them is costly and traceability is already broken.
+
+This is distinct from limitation #4 (execution-time blocking): the problem here is upstream — the generated plan itself contains no dependency declarations that could warn the operator before execution begins.
+
+**Target (v1.2):** Inter-step dependency declarations in generated plans, surfaced to the operator at `--init` before execution starts.
 
 ---
 
@@ -133,14 +145,17 @@ Specific improvements:
 3. DoD validation on `--done`: interactive checklist before advancing
 4. Registry validation on `--init`: check all agent references in the plan exist in registry before execution starts — fail fast with a clear error instead of silent broken steps
 5. `--session <agent>`: tracked ad-hoc agent calls with full journal audit trail
-6. Step dependencies: `--block`, `--done --partial`, `--resolve`
-7. Bug triage workflow: `--report-bug`, `--triage-bug`, `--bug-fix-sprint`
-8. Production readiness sprint: `--production-sprint` for MVP → production transition
+6. Step dependencies: `--block --depends-on <step>`, `--done --partial`, `--resolve <context>` — `--block` must declare which step is the blocker; `--resolve` captures resolution context that is automatically injected into the prompt when the blocked step resumes
+7. Out-of-order step execution: `--run-ahead <step>` — executes a planned step out of sequence to resolve a declared blocker; recorded in journal as "step N executed out-of-order to resolve blocker on step M"; marks the step as already executed when the cursor reaches it organically so it is not silently re-run
+8. Bug triage workflow: `--report-bug --introduced-at <step>`, `--triage-bug`, `--bug-fix-sprint` — `--introduced-at` links the bug to the step that produced it, enabling pattern detection across sprints in the retrospective
+9. Production readiness sprint: `--production-sprint` for MVP → production transition
 
 Success criteria:
 - accidental `--done` is recoverable
-- all agent interactions (structured and ad-hoc) appear in the journal
-- blocked steps have explicit state and resolution path
+- all agent interactions (structured, out-of-order, and ad-hoc) appear in the journal
+- blocked steps have explicit state, declared dependency, and resolution path with injected context
+- out-of-order step execution is traceable and does not corrupt plan state
+- bugs are attributed to the step that introduced them
 
 ---
 
@@ -153,11 +168,13 @@ Specific improvements:
 2. Confidence threshold: steps with low confidence scores are omitted or flagged
 3. Context injection: detect project stack from file system, inject into prompts
 4. Fallback: when router output is ambiguous, fall back to default sequence (never fail silently)
+5. Inter-step dependency declarations: planner identifies known dependencies between steps (e.g., step 5 backend depends on step 7 AI engineer for specific deliverables) and surfaces them to the operator at `--init` before execution starts — operator is informed of dependency risks before they surface mid-sprint
 
 Success criteria:
 - a task like "add a health check endpoint" does not generate a 13-step plan
 - plans include router reasoning (which agents were selected and why)
 - context injection improves prompt quality measurably
+- known inter-step dependencies are visible in the plan before execution begins
 
 ---
 

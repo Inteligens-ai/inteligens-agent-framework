@@ -35,8 +35,9 @@ Focus: make the execution loop safer and more observable.
 - DoD validation on `--done`: interactive checklist before advancing
 - Registry validation on `--init`: detect broken agent references before execution starts
 - Ad-hoc agent sessions (`--session`): tracked direct agent calls outside the main flow
-- Step dependency management (`--block`, `--done --partial`, `--resolve`)
-- Bug triage and fix workflow (`--report-bug`, `--triage-bug`)
+- Step dependency management (`--block --depends-on <step>`, `--done --partial`, `--resolve <context>`): declare which step is the blocker; resolution context is injected into the prompt when the blocked step resumes
+- Out-of-order step execution (`--run-ahead <step>`): run a future planned step now to unblock the current one — fully tracked in journal, step marked as already executed when cursor reaches it organically
+- Bug triage and fix workflow (`--report-bug --introduced-at <step>`, `--triage-bug`): attribute bugs to the step that introduced them for retrospective pattern detection
 - Production Readiness Sprint (`--production-sprint`): structured MVP → production transition
 
 ---
@@ -50,6 +51,7 @@ Focus: make the planner smarter without losing determinism.
 - Context injection: detect stack (requirements.txt, package.json, go.mod, etc.)
 - Minimum confidence threshold for agent selection
 - Plans reflect task type — not every task needs all 13 steps
+- Inter-step dependency declarations: known dependencies between steps surfaced to the operator at `--init` before execution starts
 
 ---
 
