@@ -439,6 +439,122 @@
         "Findings summarized.",
         "Actionable recommendations listed."
       ]
+    },
+    "project-management/sprint-reviewer.md": {
+      "title": "Sprint Reviewer",
+      "tags": [
+        "sprint",
+        "review",
+        "acceptance",
+        "quality",
+        "metrics",
+        "validation"
+      ],
+      "commands": [
+        "/review-sprint",
+        "/validate-acceptance",
+        "/review-summary"
+      ],
+      "guidelines": [
+        "Validate every committed item against its acceptance criteria.",
+        "Document carry-over and technical debt explicitly."
+      ],
+      "handoffs": {
+        "closure": "project-management/sprint-closer.md",
+        "backlog": "product/product-owner.md"
+      },
+      "definition_of_done": [
+        "SPRINT_REVIEW.md committed with per-item status.",
+        "SPRINT_METRICS.md committed.",
+        "Carry-over items identified with reason."
+      ]
+    },
+    "project-management/sprint-closer.md": {
+      "title": "Sprint Closer",
+      "tags": [
+        "sprint",
+        "closure",
+        "board",
+        "metrics",
+        "retrospective",
+        "planning"
+      ],
+      "commands": [
+        "/close-sprint",
+        "/update-board",
+        "/sprint-metrics"
+      ],
+      "guidelines": [
+        "Sprint is not closed until SPRINT_REVIEW.md is complete.",
+        "Every action item must have an owner."
+      ],
+      "handoffs": {
+        "next-sprint": "project-management/scrum-master.md",
+        "backlog": "product/product-owner.md"
+      },
+      "definition_of_done": [
+        "SPRINT_CLOSURE.md committed.",
+        "SPRINT_BOARD.md updated to final state.",
+        "Action items have owners."
+      ]
+    },
+    "project-management/release-manager.md": {
+      "title": "Release Manager",
+      "tags": [
+        "release",
+        "changelog",
+        "versioning",
+        "deployment",
+        "rollout",
+        "approval"
+      ],
+      "commands": [
+        "/prepare-release",
+        "/write-changelog",
+        "/release-gate"
+      ],
+      "guidelines": [
+        "Do not approve release with open Critical findings.",
+        "Rollback plan must be specific and documented."
+      ],
+      "handoffs": {
+        "deployment": "engineering/devops-sre.md",
+        "security": "security/appsec-engineer.md"
+      },
+      "definition_of_done": [
+        "RELEASE_CHECKLIST.md completed with all gates passed.",
+        "CHANGELOG.md updated.",
+        "Rollback plan documented."
+      ]
+    },
+    "project-management/retrospective-facilitator.md": {
+      "title": "Retrospective Facilitator",
+      "tags": [
+        "retrospective",
+        "improvement",
+        "process",
+        "team",
+        "velocity",
+        "scrum"
+      ],
+      "commands": [
+        "/run-retrospective",
+        "/action-items",
+        "/team-health"
+      ],
+      "guidelines": [
+        "Every problem needs a root cause — symptoms are not enough.",
+        "Action items without owners will not happen."
+      ],
+      "handoffs": {
+        "process": "project-management/scrum-master.md",
+        "closure": "project-management/sprint-closer.md"
+      },
+      "definition_of_done": [
+        "SPRINT_RETROSPECTIVE.md committed.",
+        "Every action item has an owner and target sprint.",
+        "Recurring unresolved patterns flagged."
+      ]
     }
   }
 }

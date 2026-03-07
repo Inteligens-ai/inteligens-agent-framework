@@ -1,7 +1,4 @@
-.PHONY: route route-public
+.PHONY: route
 
 route:
 	python .agents/router/agent_router.py --task "$(TASK)" --product $(PRODUCT)
-
-route-public:
-	python .agents/router/agent_router.py --task "$(TASK)" --public

@@ -30,6 +30,10 @@ def should_require_approval(step: dict) -> bool:
     if phase == "release":
         return True
     
+    # Sprint retrospective
+    if phase == "retrospective":
+        return True
+
     # Sprint closure
     if phase == "closure":
         return True
@@ -46,19 +50,20 @@ def main():
     args = parser.parse_args()
 
     steps_data = [
-        {"step": 1, "agent": "product/product-owner.md", "phase": "plan"},
-        {"step": 2, "agent": "project-management/scrum-master.md", "phase": "plan"},
-        {"step": 3, "agent": "engineering/staff-architect.md", "phase": "design"},
-        {"step": 4, "agent": "engineering/tech-lead.md", "phase": "design"},
-        {"step": 5, "agent": "engineering/backend-engineer.md", "phase": "build"},
-        {"step": 6, "agent": "engineering/frontend-engineer.md", "phase": "build"},
-        {"step": 7, "agent": "engineering/ai-engineer.md", "phase": "build"},
-        {"step": 8, "agent": "engineering/devops-sre.md", "phase": "build"},
-        {"step": 9, "agent": "testing/qa-strategist.md", "phase": "test"},
-        {"step": 10, "agent": "security/appsec-engineer.md", "phase": "test"},
-        {"step": 11, "agent": "project-management/release-manager.md", "phase": "release"},
-        {"step": 12, "agent": "project-management/sprint-reviewer.md", "phase": "review"},
-        {"step": 13, "agent": "project-management/sprint-closer.md", "phase": "closure"},
+        {"step": 1,  "agent": "product/product-owner.md",                              "phase": "plan"},
+        {"step": 2,  "agent": "project-management/scrum-master.md",                    "phase": "plan"},
+        {"step": 3,  "agent": "engineering/staff-architect.md",                        "phase": "design"},
+        {"step": 4,  "agent": "engineering/tech-lead.md",                              "phase": "design"},
+        {"step": 5,  "agent": "engineering/backend-engineer.md",                       "phase": "build"},
+        {"step": 6,  "agent": "engineering/frontend-engineer.md",                      "phase": "build"},
+        {"step": 7,  "agent": "engineering/ai-engineer.md",                            "phase": "build"},
+        {"step": 8,  "agent": "engineering/devops-sre.md",                             "phase": "build"},
+        {"step": 9,  "agent": "testing/qa-strategist.md",                              "phase": "test"},
+        {"step": 10, "agent": "security/appsec-engineer.md",                           "phase": "test"},
+        {"step": 11, "agent": "project-management/release-manager.md",                 "phase": "release"},
+        {"step": 12, "agent": "project-management/sprint-reviewer.md",                 "phase": "review"},
+        {"step": 13, "agent": "project-management/retrospective-facilitator.md",       "phase": "retrospective"},
+        {"step": 14, "agent": "project-management/sprint-closer.md",                   "phase": "closure"},
     ]
     
     # Add requires_approval flag based on heuristics

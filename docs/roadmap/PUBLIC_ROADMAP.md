@@ -4,66 +4,87 @@
 
 ---
 
-## ✅ v1.0 — Assisted Auto‑Execution (Current)
-- Multi‑agent orchestration
-- Human‑in‑the‑loop execution
-- Sprint‑aware build phase
-- Execution journal & state tracking
-- Sprint Reviewer & Sprint Closure
-- Approval Gates (human checkpoints)
+## ✅ v1.0 — Assisted Auto-Execution (Current)
+
+- Multi-agent orchestration (15+ specialized roles)
+- Human-in-the-loop execution by design
+- Sprint-aware build phase
+- Execution journal and state tracking
+- Approval Gates (human checkpoints between critical phases)
+- Sprint Reviewer and Sprint Closure
+- IDE-agnostic operation (Cursor, VSCode, Claude Code, CLI)
 
 ---
 
-## 🚧 v1.1 — Governance Hardening
-- Enhanced execution visibility
-- Sprint metrics enrichment
-- Improved approval observability
-- Execution navigation (`--back` command)
-- Action safety (confirmation prompts, undo/revert)
-- Ad-hoc review mode with full observability (`--review <agent>`)
-- Ad-hoc agent sessions (`--session`, `--session-log`, `--session-close`) for tracked direct agent calls
+## ✅ v1.0.1 — Strengthened Agent Personas
+
+- All agent personas rewritten with explicit role priming
+- Output contracts: each agent now specifies exact artifacts and formats to produce
+- Failure modes defined per agent (what agents must NOT do)
+- Definition of Done made objective and verifiable per agent
+- Consistent structure across all 15 agent roles
+
+---
+
+## 🚧 v1.1 — Execution Control
+
+Focus: make the execution loop safer and more observable.
+
+- `--status` command: show current step, completed steps, pending approvals
+- `--back` command: navigate to previous steps safely
+- DoD validation on `--done`: interactive checklist before advancing
+- Registry validation on `--init`: detect broken agent references before execution starts
+- Ad-hoc agent sessions (`--session`): tracked direct agent calls outside the main flow
 - Step dependency management (`--block`, `--done --partial`, `--resolve`)
-- Automatic dependency resolution detection
-- Backward navigation for blocked steps
-- Production Readiness Sprint (`--production-sprint`) for structured MVP → Production transition
-- Bug Triage and Fix Workflow (`--report-bug`, `--triage-bug`, `--bug-fix-sprint`) for structured bug handling and Scrum integration
+- Bug triage and fix workflow (`--report-bug`, `--triage-bug`)
+- Production Readiness Sprint (`--production-sprint`): structured MVP → production transition
 
 ---
 
-## 🔜 v1.2 — Advanced Dependency Management
-- Automatic planning review triggers (PO + Scrum Master)
-- Intelligent workaround suggestions
-- Blocking metrics and analytics (`--metrics`)
-- Circular dependency detection
-- Step reordering suggestions (`--suggest-reorder`)
-- Backlog integration suggestions
+## 🔜 v1.2 — Planner Intelligence
+
+Focus: make the planner smarter without losing determinism.
+
+- Router-driven plan generation (replaces hardcoded 13-step sequence)
+- Fallback to default sequence when router confidence is low
+- Context injection: detect stack (requirements.txt, package.json, go.mod, etc.)
+- Minimum confidence threshold for agent selection
+- Plans reflect task type — not every task needs all 13 steps
 
 ---
 
 ## 🔜 v1.3 — Intelligent Planning
-- Backlog ingestion
-- Context‑aware planning
-- Smarter task decomposition
-- Reduced prompt friction
-- **Adaptive project type detection** (ML, Hardware, IoT, Data Science, Security, Edge, etc.)
-- **Project-specific step templates** (automatic step selection based on project type)
-- **Hybrid project support** (combines steps from multiple project types)
+
+Focus: smarter decomposition and adaptive flows.
+
+- Task decomposition: complex tasks broken into subtasks with dependencies
+- Dependency-aware step ordering (topological sort)
+- Adaptive project type detection (ML, IoT, Data Science, Security, Edge, etc.)
+- Project-specific step templates (automatic step selection based on project type)
+- Backlog ingestion (issues → execution plan)
 
 ---
 
 ## 🔮 v2.0 — Adaptive Swarm
-- Semi‑autonomous execution loops
-- Multi‑sprint orchestration
-- Agent memory improvements
-- Parallel swarm coordination
+
+Focus: controlled autonomy at scale.
+
+- Semi-autonomous execution loops (run until next approval gate)
+- Multi-sprint orchestration with sprint chaining
+- Parallel agent coordination
+- Swarm health scoring and bottleneck detection
+- Dynamic plan adaptation based on execution history
 
 ---
 
 ## 🧪 Future Research
+
+These are intentionally not committed to a release:
+
 - Daily Sync Orchestrator
-- Fully distributed agents
-- Autonomous risk detection
-- Self‑healing pipelines
+- Cross-project swarm memory
+- Self-healing execution loops
+- Fully distributed agent coordination
 
 ---
 

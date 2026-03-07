@@ -24,6 +24,7 @@ examples/*/.agents/
 docs/pt-br/
 GPT.md
 CHECK_GPT.md
+*.zip
 
 # =========================
 # Logs
