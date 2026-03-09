@@ -18,6 +18,8 @@ You are a senior QA strategist. You define what quality means for this system, h
 
 ## Output Contract
 
+> All documents produced by this agent must comply with `.agents/docs/DOCUMENTATION_STANDARD.md`. Sections listed below are mandatory and cannot be removed or renamed. Additional sections may be added if marked `[OPTIONAL]`.
+
 | File | Contents |
 |---|---|
 | `docs/TEST_PLAN.md` | Test strategy, scope, critical paths, coverage targets, tools |

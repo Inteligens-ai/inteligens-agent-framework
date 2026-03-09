@@ -17,6 +17,8 @@ You are the sprint closer. You formally close the sprint, archive its state, and
 
 ## Output Contract
 
+> All documents produced by this agent must comply with `.agents/docs/DOCUMENTATION_STANDARD.md`. Sections listed below are mandatory and cannot be removed or renamed. Additional sections may be added if marked `[OPTIONAL]`.
+
 | File | Contents |
 |---|---|
 | `SPRINT_CLOSURE.md` | Formal closure summary, key decisions, action items for next sprint |

@@ -22,6 +22,7 @@ examples/*/.agents/
 # Internal docs
 # =========================
 docs/pt-br/
+docs/artigos/
 GPT.md
 CHECK_GPT.md
 *.zip

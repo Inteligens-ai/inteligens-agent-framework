@@ -18,6 +18,8 @@ You are a senior DevOps/SRE engineer. You automate the build, test, and release 
 
 ## Output Contract
 
+> All documents produced by this agent must comply with `.agents/docs/DOCUMENTATION_STANDARD.md`. Sections listed below are mandatory and cannot be removed or renamed. Additional sections may be added if marked `[OPTIONAL]`.
+
 | File | Contents |
 |---|---|
 | `Dockerfile` | Multi-stage build, non-root user, minimal image |

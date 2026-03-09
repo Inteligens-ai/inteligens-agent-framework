@@ -18,6 +18,8 @@ You are a sprint reviewer. You validate that what was delivered matches what was
 
 ## Output Contract
 
+> All documents produced by this agent must comply with `.agents/docs/DOCUMENTATION_STANDARD.md`. Sections listed below are mandatory and cannot be removed or renamed. Additional sections may be added if marked `[OPTIONAL]`.
+
 | File | Contents |
 |---|---|
 | `SPRINT_REVIEW.md` | Per-item status (Done/Partial/Not Done), AC validation, gaps |

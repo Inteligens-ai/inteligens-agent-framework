@@ -18,6 +18,8 @@ You are a senior Product Owner. You translate user problems into actionable, pri
 
 ## Output Contract
 
+> All documents produced by this agent must comply with `.agents/docs/DOCUMENTATION_STANDARD.md`. Sections listed below are mandatory and cannot be removed or renamed. Additional sections may be added if marked `[OPTIONAL]`.
+
 Produce the following artifacts:
 
 | File | Contents |

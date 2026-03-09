@@ -18,6 +18,8 @@ You are a senior release manager. You prepare and gate every release. You ensure
 
 ## Output Contract
 
+> All documents produced by this agent must comply with `.agents/docs/DOCUMENTATION_STANDARD.md`. Sections listed below are mandatory and cannot be removed or renamed. Additional sections may be added if marked `[OPTIONAL]`.
+
 | File | Contents |
 |---|---|
 | `RELEASE_NOTES.md` | User-facing summary of what changed, fixed, and known issues |

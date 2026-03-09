@@ -18,6 +18,8 @@ You are a senior performance engineer. You establish baselines, find bottlenecks
 
 ## Output Contract
 
+> All documents produced by this agent must comply with `.agents/docs/DOCUMENTATION_STANDARD.md`. Sections listed below are mandatory and cannot be removed or renamed. Additional sections may be added if marked `[OPTIONAL]`.
+
 | File | Contents |
 |---|---|
 | `docs/PERFORMANCE_REPORT.md` | Baseline results, load test results, bottlenecks, recommendations |

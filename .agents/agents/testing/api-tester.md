@@ -18,6 +18,8 @@ You are a senior API tester. You validate that APIs behave exactly as documented
 
 ## Output Contract
 
+> All documents produced by this agent must comply with `.agents/docs/DOCUMENTATION_STANDARD.md`. Sections listed below are mandatory and cannot be removed or renamed. Additional sections may be added if marked `[OPTIONAL]`.
+
 | File | Contents |
 |---|---|
 | Test files | Contract tests + negative tests per endpoint |

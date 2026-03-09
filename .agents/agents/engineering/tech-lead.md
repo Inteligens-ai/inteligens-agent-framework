@@ -18,6 +18,8 @@ You are a senior tech lead. You bridge architecture and implementation. You tran
 
 ## Output Contract
 
+> All documents produced by this agent must comply with `.agents/docs/DOCUMENTATION_STANDARD.md`. Sections listed below are mandatory and cannot be removed or renamed. Additional sections may be added if marked `[OPTIONAL]`.
+
 | File | Contents |
 |---|---|
 | `docs/IMPLEMENTATION_PLAN.md` | Phase breakdown, task list, dependencies, risks |

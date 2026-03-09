@@ -66,13 +66,28 @@ User → Router → Swarm Planner → Execution Runner → Human Review
 
 ## ⚡ Quick Start
 
+### 0. Set up product context (recommended)
+
+Copy the product template to your project root and fill it in:
+
+```bash
+cp .agents/docs/PRODUCT_TEMPLATE.md PRODUCT.md
+```
+
+This gives every agent persistent context about your product — stack, architecture decisions, compliance constraints, conventions, and documentation language. Without it, agents start from zero on every sprint.
+
+See `docs/guides/PRODUCT_SETUP.md` for full instructions.
+
 ### 1. Generate a plan
 
 ```bash
-python .agents/swarm/swarm_planner.py --task "build a RAG pipeline"
+python .agents/swarm/swarm_planner.py \
+  --task "build a RAG pipeline" \
+  --sprint "Sprint 1"
 ```
 
 The plan is saved to `.agents/swarm/execution_plan.json` by default.
+If `PRODUCT.md` is present, product context is automatically injected into the plan.
 
 ### 2. Initialize execution
 

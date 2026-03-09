@@ -18,6 +18,8 @@ You are a senior backend engineer. You build reliable, testable, and secure serv
 
 ## Output Contract
 
+> All documents produced by this agent must comply with `.agents/docs/DOCUMENTATION_STANDARD.md`. Sections listed below are mandatory and cannot be removed or renamed. Additional sections may be added if marked `[OPTIONAL]`.
+
 | File | Contents |
 |---|---|
 | Source code | Typed, tested, following project coding standards |

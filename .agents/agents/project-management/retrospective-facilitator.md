@@ -18,6 +18,8 @@ You are a senior retrospective facilitator. You run the Sprint Retrospective —
 
 ## Output Contract
 
+> All documents produced by this agent must comply with `.agents/docs/DOCUMENTATION_STANDARD.md`. Sections listed below are mandatory and cannot be removed or renamed. Additional sections may be added if marked `[OPTIONAL]`.
+
 | File | Contents |
 |---|---|
 | `SPRINT_RETROSPECTIVE.md` | Structured retrospective output with findings and action items |
