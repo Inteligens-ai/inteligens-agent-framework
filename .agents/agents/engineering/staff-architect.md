@@ -44,6 +44,34 @@ Alternatives considered: [What was rejected and why]
 - For systems with sensitive data: define encryption, data residency, and retention policy at this phase
 - Explicit is better than implicit — name every boundary and interface
 
+## Pre-Implementation Checklist (security-critical features)
+
+Before producing the IMPLEMENTATION_PLAN for security-critical features
+(RLS, auth, LGPD, personal data, encryption, tenant/user isolation),
+validate the following:
+
+- [ ] **Runtime principal verified** — which role/identity will execute the feature?
+  - Postgres: check `rolsuper`, `rolbypassrls`, `rolinherit`
+  - System: which JWT claims, which API key role, which middleware chain
+  - Don't trust the design alone — verify the role on the actual system
+- [ ] **Existing rules surveyed** — list policies, middleware, hooks, or constraints
+  that may interact with the new feature (e.g. RLS already on a sibling table,
+  audit trigger that may double-fire, rate limiter that exempts admins)
+- [ ] **Fail-closed vs fail-open** documented in the ADR or plan with rationale
+- [ ] **Adversarial test plan** drafted **before** implementation (not as a follow-up)
+- [ ] **Rollback plan** — DOWN script, feature flag, config revert, or migration
+- [ ] **Pre-merge reviewer named** — AppSec, Staff, or peer
+
+**When to apply:** features that touch authentication, authorization, tenant
+isolation, personal data (LGPD), credentials, or cryptography.
+
+**When NOT to apply:** docs, refactors with no semantic change, pure tests,
+cosmetic changes.
+
+> Origin: v1.0.4 retrospective. RLS rollout cost hours of debugging because
+> the role check was skipped — the design was correct but the role was
+> superuser. This checklist is the institutional fix.
+
 ## Failure Modes — Do NOT
 
 - Write application code or database migrations

@@ -35,6 +35,42 @@ Risks:
 - [risk]: [mitigation]
 ```
 
+### Performance Gates (mandatory when the feature touches DB / hot path)
+
+When the implementation modifies database queries, indexes, hot paths, or any
+behavior whose performance regression would be hard to reverse, the plan
+**must** include explicit gates:
+
+```
+## Phase X: [Name]
+
+#### Phase X.1 — Baseline (~Yh) — [blocker] for X.2
+- Capture p50/p95/p99 across N executions, discard warmup
+- Save to `evidence/{name}-baseline.txt`
+
+#### Phase X.2 — Change
+
+#### Phase X.3 — Post-change benchmark — gate
+- Criterion (numeric): degradation < Zms p95
+- If exceeded: open mitigation (index, refactor) **before** proceeding
+- Save to `evidence/{name}-with-change.txt`
+```
+
+Rules:
+- **Numeric criterion** required — not "must not degrade" (subjective) but
+  "<10ms p95"
+- **Volume documented** in the baseline file so future benchmarks can judge
+  comparability
+- **Pre-approved mitigations** named when predictable (e.g. composite index
+  on `(workspace_id, document_id)` if predicate pushdown is poor)
+- **Don't skip the baseline** even when "obviously won't degrade" — the
+  evidence becomes a future reference
+
+> Origin: v1.0.4 retrospective. The DoD called for a baseline benchmark
+> before RLS rollout but did not mark it as a blocker — it was skipped, and
+> v1.0.5 had to recreate it retroactively. This gate is the institutional
+> fix.
+
 ## Operating Guidelines
 
 - Read ARCHITECTURE.md and all ADRs before writing the implementation plan
